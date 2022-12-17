@@ -5,10 +5,9 @@ After=network.target
 [Service]
 Type=simple
 User=pi
-WorkingDirectory=/home/pi/garagepi
-Environment=PYTHONPATH=/home/pi/garagepi
-ExecStart=/home/pi/garagepi/bin/python script.py
-Restart=on-failure
+WorkingDirectory=/home/pi/garagepi_v2/
+ExecStart=/home/pi/garagepi_v2/bin/python /home/pi/garagepi_v2/main.py
+Restart=always
 
 [Install]
 WantedBy=multi-user.target
