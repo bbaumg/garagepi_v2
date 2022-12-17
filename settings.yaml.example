@@ -1,26 +1,14 @@
 LOGLEVEL: 10
 
 THINGSPEAK:
-  CHANNELID: 0000
-  APIKEY: <KEY>
+  CHANNELID:  ####
+  APIKEY:     XXXXXXXXXXXXXXXX
 
-TWILIO:
-  SID:    <SID>
-  TOKEN:  <KEY>
-  TO:     5551112222
-  FROM:   5552223333
-  PAUSE:  True
-
-DOORMAIN:
-  UPGPIO:     22
-  DOWNPGPIO:  23
-
-DOORSIDE:
-  UPGPIO:     24
-  DOWNPGPIO:  25
-
-ALARMS:
-  RETRY:      60
-  TEMPMIN:    40
-  TEMPMAX:    90
-  DOORTIME:   60
+MQTT:
+  BROKER:   <FQDN OR IP>
+  PORT:     1883  #usually 1883
+  CLIENTID: <device name/id)
+  USER:     <username>
+  PASS:     <password>
+  TOPIC:    <topic path>
+  
