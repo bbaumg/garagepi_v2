@@ -1,0 +1,14 @@
+[Unit]
+Description=GaragePi
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=simple
+User=pi
+WorkingDirectory=/home/pi/garagepi_v2/
+ExecStart=/home/pi/garagepi_v2/bin/python /home/pi/garagepi_v2/garagepi/main.py
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

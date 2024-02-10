@@ -75,7 +75,7 @@ try:
 
 
     logger.info("Pausing for a few seconds")
-    time.sleep(60)
+    time.sleep(10)
 
 except KeyboardInterrupt:
   logger.critical("Keyboard Interrupt:  Program Exiting")
@@ -86,3 +86,7 @@ finally:
   logger.critical("Program Ending = " + os.uname().nodename + ":" + __file__)
   #sendSMS("Program Ended = " + os.uname().nodename + ":" + __file__)
   logger.critical("!!!!!!!!!!!!!!!!!!!!!!!!! End Program !!!!!!!!!!!!!!!!!!!!!!!!!")
+
+# TODO LIST:
+#  Add debug and info output before each step in the main loop
+#  Add variable from settings file for loop timeout (default = 60 seconds)
