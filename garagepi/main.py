@@ -6,6 +6,7 @@ import json
 import RPi.GPIO as GPIO
 import paho.mqtt.client as mqtt
 import ssl
+import traceback
 from datetime import datetime
 from bme280.bme280 import bme280
 
@@ -58,20 +59,20 @@ try:
     sensor = bme280()
     sensorData = dict()
     sensorData = sensor.readBME280Data()
-    logger.debug(sensorData)
+    logger.debug("Sensor Data:  " + str(sensorData))
 
     mqttMessageJson = {
       'temperature': round(sensorData['TempF']),
       'humidity': round(sensorData['Humidity'], 0),
       'pressure': round(sensorData['Pressure'], 0)
     }
-    logger.debug(mqttMessageJson)
+    logger.debug("Create MQTT message to send :  " + str(mqttMessageJson))
 
     mqttClient = mqtt.Client(appSettings['MQTT']['CLIENTID'])
     mqttClient.username_pw_set(appSettings['MQTT']['USER'], appSettings['MQTT']['PASS'])
     mqttClient.connect(appSettings['MQTT']['BROKER'], appSettings['MQTT']['PORT'])
     mqttRetrun = mqttClient.publish(appSettings['MQTT']['TOPIC'], json.dumps(mqttMessageJson))
-    logger.debug(mqttRetrun)
+    logger.debug("MQTT Response:  " + str(mqttRetrun))
 
 
     logger.info("Pausing for a few seconds")
@@ -82,6 +83,7 @@ except KeyboardInterrupt:
   print(datetime.now().strftime("Program Shutdown -- %Y/%m/%d -- %H:%M  -- Goodbye! \n"))
 finally:
   logger.critical("!!!!!!!!!!!!!!!!!!!!!!!!! Exiting Program !!!!!!!!!!!!!!!!!!!!!!!!!")
+  logger.critical(traceback.print_exc())
   GPIO.cleanup()
   logger.critical("Program Ending = " + os.uname().nodename + ":" + __file__)
   #sendSMS("Program Ended = " + os.uname().nodename + ":" + __file__)
