@@ -9,6 +9,7 @@ User=pi
 WorkingDirectory=/home/pi/garagepi_v2/
 ExecStart=/home/pi/garagepi_v2/bin/python /home/pi/garagepi_v2/garagepi/main.py
 Restart=always
+KillSignal=SIGTERM
 
 [Install]
 WantedBy=multi-user.target
