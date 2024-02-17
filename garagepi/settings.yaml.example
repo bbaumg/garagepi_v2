@@ -1,4 +1,5 @@
 LOGLEVEL: 10
+FREQUENCY: 60
 
 THINGSPEAK:
   CHANNELID:  ####
@@ -11,4 +12,7 @@ MQTT:
   USER:     <username>
   PASS:     <password>
   TOPIC:    <topic path>
-  
+
+PUSHOVER:
+  API_TOKEN:  <api token>
+  USER_KEY:   <user key>
