@@ -1,4 +1,4 @@
-LOGLEVEL: 10
+LOGLEVEL: 20
 FREQUENCY: 60
 
 THINGSPEAK:
@@ -8,7 +8,7 @@ THINGSPEAK:
 MQTT:
   BROKER:   <FQDN OR IP>
   PORT:     1883  #usually 1883
-  CLIENTID: <device name/id)
+  CLIENTID: <device name/id>
   USER:     <username>
   PASS:     <password>
   TOPIC:    <topic path>
