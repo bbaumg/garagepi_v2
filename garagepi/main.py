@@ -12,7 +12,7 @@ import signal
 import http.client
 import urllib
 from datetime import datetime
-from bme280.bme280 import bme280
+from bme280 import bme280
 
 class garagepi:
 
@@ -26,6 +26,7 @@ class garagepi:
     self.logger.critical(os.uname())
     self.logger.critical(GPIO.RPI_INFO)
     self.logger.critical("Log Level = " + str(self.logger.getEffectiveLevel()))
+
     self.appSettings = self.loadSettings()
     
     signal.signal(signal.SIGTERM, self._handle_sigterm)
@@ -67,10 +68,9 @@ class garagepi:
     try:
       while True:
         self.logger.info("================================ Top of Loop ================================")
-        loopTime = datetime.now()
 
         # Read the environmental sensor and store in a dictionaries for later use
-        sensor = bme280()
+        sensor = bme280.bme280()
         sensorData = dict()
         sensorData = sensor.readBME280Data()
         self.logger.debug("Sensor Data:  " + str(sensorData))
